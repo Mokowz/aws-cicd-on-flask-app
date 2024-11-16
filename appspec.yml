@@ -10,4 +10,9 @@ hooks:
     - location: scripts/stop-container.sh
       timeout: 300
       runas: root
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: ../aws-cicd-on-flask-app
       
