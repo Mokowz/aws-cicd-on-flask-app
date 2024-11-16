@@ -11,8 +11,8 @@ hooks:
       timeout: 300
       runas: root
 
-artifacts:
-  files:
-    - '**/*'
-  base-directory: ../aws-cicd-on-flask-app
+# artifacts:
+#   files:
+#     - '**/*'
+#   base-directory: ../aws-cicd-on-flask-app
       
