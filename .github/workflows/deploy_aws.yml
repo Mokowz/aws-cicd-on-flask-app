@@ -1,0 +1,13 @@
+name: Deploy Flask App on AWS
+
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        run: actions/checkout@v2
+
+      - name: Connect to AWS EC2 instance
+        run: ./deploy.sh
