@@ -10,5 +10,6 @@ ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_IP "
   pip install -r requirements.txt
 
   sudo systemctl daemon-reload
+  sudo systemctl restart gunicorn
   sudo systemctl restart nginx
 "
