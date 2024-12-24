@@ -13,4 +13,17 @@ jobs:
         env:
           EC2_KEY: ${{ secrets.EC2_KEY }}
           EC2_IP: ${{ secrets.EC2_IP }}
-        run: ./deploy.sh
+        # run: ./deploy.sh
+        run: |
+          echo "$EC2_KEY" > key.pem
+          sudo chmod 600 key.pem
+
+          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_IP "
+            cd ~/flask_app
+            git pull
+            . venv/bin/activate
+            pip install -r requirements.txt
+
+            sudo systemctl daemon-reload
+            sudo systemctl restart nginx
+          "

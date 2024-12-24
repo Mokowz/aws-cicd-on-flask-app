@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo $EC2_KEY > key.pem
+echo "$EC2_KEY" > key.pem
 sudo chmod 600 key.pem
 
 ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_IP "
