@@ -5,6 +5,7 @@ on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.2.2
@@ -23,7 +24,10 @@ jobs:
             git pull
             . venv/bin/activate
             pip install -r requirements.txt
-
             sudo systemctl restart gunicorn
+            deactivate
+
+            sudo systemctl restart app.service
+            sudo chmod 777 flask_app/flask_app.sock
             sudo systemctl restart nginx
           "
