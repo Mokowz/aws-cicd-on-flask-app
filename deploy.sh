@@ -3,7 +3,7 @@
 echo $EC2_KEY > key.pem
 sudo chmod 600 key.pem
 
-ssh -i key.pem ubuntu@$EC2_IP "
+ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_IP "
   cd ~/flask_app
   git pull
   . venv/bin/activate
