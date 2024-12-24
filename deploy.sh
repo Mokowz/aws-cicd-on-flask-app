@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-ssh -i /home/ronny/Desktop/Deep-Devops/.keys/aws-login.pem ubuntu@98.80.74.89 "
+echo $EC2_KEY > key.pem
+sudo chmod 600 key.pem
+
+ssh -i key.pem ubuntu@$EC2_IP "
   cd ~/flask_app
   git pull
   . venv/bin/activate
